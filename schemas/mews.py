@@ -1,5 +1,6 @@
+from typing import List, Optional
+
 from pydantic import BaseModel, Field
-from typing import Optional, List
 
 
 class MewsRoom(BaseModel):
@@ -14,7 +15,7 @@ class MewsRoom(BaseModel):
     is_cleaning_finished: bool = Field(..., alias="IsCleaningFinished")
 
 
-class MewsParse(BaseModel):
+class MewsData(BaseModel):
     """Base model for Mews data."""
 
     id: str = Field(..., alias="Id")
@@ -22,4 +23,3 @@ class MewsParse(BaseModel):
     description: str = Field(..., alias="Description")
     rooms: List[MewsRoom] = Field(..., alias="Rooms")
     is_active: Optional[bool] = Field(..., alias="IsActive")
-
