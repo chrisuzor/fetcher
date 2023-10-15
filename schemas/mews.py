@@ -5,21 +5,21 @@ from pydantic import BaseModel, Field
 
 class MewsRoom(BaseModel):
     """Message model for Mews Room data."""
-    room_number: str = Field(..., alias="RoomNumber")
-    room_id: str = Field(..., alias="RoomId")
-    room_name: str = Field(..., alias="RoomName")
-    room_description: str = Field(..., alias="RoomDescription")
-    status: str = Field(..., alias="Status")
-    is_cleaning_required: bool = Field(..., alias="IsCleaningRequired")
-    is_cleaning_in_progress: bool = Field(..., alias="IsCleaningInProgress")
-    is_cleaning_finished: bool = Field(..., alias="IsCleaningFinished")
+    RoomNumber: str = Field(..., alias="RoomNumber")
+    RoomId: str = Field(..., alias="RoomId")
+    RoomName: str = Field(..., alias="RoomName")
+    RoomDescription: str = Field(..., alias="RoomDescription")
+    Status: str = Field(..., alias="Status")
+    IsCleaningRequired: bool = Field(..., alias="IsCleaningRequired")
+    IsCleaningInProgress: bool = Field(..., alias="IsCleaningInProgress")
+    IsCleaningFinished: bool = Field(..., alias="IsCleaningFinished")
 
 
 class MewsData(BaseModel):
     """Base model for Mews data."""
 
-    id: str = Field(..., alias="Id")
-    name: str = Field(..., alias="Name")
-    description: str = Field(..., alias="Description")
-    rooms: List[MewsRoom] = Field(..., alias="Rooms")
-    is_active: Optional[bool] = Field(..., alias="IsActive")
+    Id: str = Field(..., alias="Id")
+    Name: str = Field(..., alias="Name")
+    Description: str = Field(..., alias="Description")
+    Rooms: List[MewsRoom] = Field(..., alias="Rooms")
+    IsActive: Optional[bool] = Field(..., alias="IsActive")

@@ -25,6 +25,7 @@ celery = app.celery_app
 @app.middleware("http")
 async def add_process_time_header(request, call_next):
     print('inside middleware!')
+    print('request', type(request), request)
     start_time = time.time()
     response = await call_next(request)
     process_time = time.time() - start_time

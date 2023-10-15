@@ -6,16 +6,20 @@ from api import send_to_parser
 from celery_tasks.tasks import send_mews_object_to_parser
 from config.celery_utils import get_task_info
 from schemas.mews import MewsData
+import json
 
 router = APIRouter(prefix='/mews', tags=['Mews'], responses={404: {"description": "Not found"}})
 
 
 @router.post("/parse")
-async def get_universities_async(data: MewsData):
+async def parse_data(data: MewsData):
     """
     Send data to Parser microservice
     """
-    task = send_mews_object_to_parser.apply_async(args=[data])
+    print('Request received to send data to parser')
+    print(data)
+    json_data = json.dumps(data.model_dump())
+    task = send_mews_object_to_parser.apply_async(args=[data.model_dump()])
     return JSONResponse({"task_id": task.id})
 
 

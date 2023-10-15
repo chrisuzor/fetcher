@@ -1,9 +1,20 @@
 # Description: This file is responsible for sending data to Parser microservice.
 
-url = ''
+import json
+import httpx
+
+url = 'http://localhost:8100/mews/send'
+
 def send_to_mews(mews_object: str) -> str:
     print('sending parser data to mews ', mews_object)
-    return 'success'
-    # client = httpx.Client()
-    # response = client.get(url, params=mews_object)
-    # response_json = json.loads(response.text)
+    print('type of mews_object is', type(mews_object))
+    client = httpx.Client()
+    response = client.post(url, json=mews_object, headers={'Content-Type': 'application/json'})
+    response_json = json.loads(response.text)
+    if response.status_code != 200:
+        print('error in sending data to mews')
+        print('response_json', response_json)
+        return 'error'
+    print('data sent to mews')
+    print('response_json', response_json)
+    return response_json

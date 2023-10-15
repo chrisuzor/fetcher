@@ -18,7 +18,7 @@ class BaseConfig:
         # default queue
         Queue("celery"),
         # custom queue
-        Queue("mews"),
+        Queue("fetcher_mews"),
     )
 
     CELERY_TASK_ROUTES = (route_task,)
