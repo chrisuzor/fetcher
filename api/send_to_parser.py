@@ -5,7 +5,8 @@ import httpx
 
 url = 'http://localhost:8100/mews/send'
 
-def send_to_mews(mews_object: str) -> str:
+
+def send_to_mews(mews_object: dict) -> str:
     print('sending parser data to mews ', mews_object)
     print('type of mews_object is', type(mews_object))
     client = httpx.Client()
@@ -15,6 +16,6 @@ def send_to_mews(mews_object: str) -> str:
         print('error in sending data to mews')
         print('response_json', response_json)
         return 'error'
-    print('data sent to mews')
+    print('data sent to parser')
     print('response_json', response_json)
     return response_json
